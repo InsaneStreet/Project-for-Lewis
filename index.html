@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <style>
+  .myDiv {
+    border: 5px outset yellow;
+    background-color: lightblue;
+    text-align: center;
+    font-size: calc(0.5em + 0.5vw); /* Adjust font size based on viewport width */
+    padding: 10px;
+  }
+  .centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 500px;
+  }
+  #birthday-counter {
+    /* Removed fixed positioning for the original birthday counter */
+    width: 100%;
+    text-align: center; 
+    font-size: calc(0.5em + 0.5vw); /* Adjust font size based on viewport width */
+  }
+  @media (max-width: 768px) {
+    /* For mobile screens */
+    #birthday-counter {
+      /* Removed fixed positioning for the original birthday counter */
+      width: 100%;
+      font-size: calc(0.5em + 0.8vw); /* Adjust font size for smaller screens */
+    }
+  }
+  .newDiv {
+    border: 5px outset red; /* Changed to red */
+    background-color: lightblue;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 150px; /* Changed width */
+    height: 200px; /* Increased height */
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: space-around; /* Distribute space evenly */
+    font-size: calc(0.5em + 0.5vw); /* Adjust font size based on viewport width */
+  }
+  .title {
+    font-size: calc(0.9em + 0.6vw); /* Adjust font size based on viewport width */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .or {
+    font-size: calc(0.7em + 0.4vw); /* Adjust font size based on viewport width */
+    margin-bottom: 2px; /* Reduced margin for less gap */
+  }
+  .counter {
+    font-size: calc(0.5em + 0.5vw); /* Adjust font size based on viewport width */
+    margin-bottom: 10px;
+  }
+  </style>
+  <head>
+  <meta charset="utf-8">
+  <body style="background-color:grey;">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+    <body {
+        font-family: Ubuntu, "times new roman", times, roman, serif;}>
+
+</head>
+  <body>
+
+  <div class="myDiv">
+    <h2>Welcome to Eduardo's Website!</h2>
+    <p>The lesser average man</p>
+  </div>
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="newDiv">
+    <div class="title">How old am I?</div>
+    <div id="birthday-counter" class="counter">
+    <script>
+      function updateBirthdayCounter() {
+        const birthday = new Date(2008, 0, 21, 8, 9); // January 21, 2008, 8:09 AM
+        const now = new Date();
+        const timeDifference = now - birthday;
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60) % (1000 * 60) / 1000);
+
+        document.getElementById("birthday-counter").textContent = `It has been ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+      }
+      updateBirthdayCounter(); // Call the function initially
+      setInterval(updateBirthdayCounter, 1000); // Update every second
+    </script>
+    </div>
+    <div class="or">or</div>
+    <div id="birthday-counter-detailed" class="counter">
+    <script>
+      function updateBirthdayCounterDetailed() {
+        const birthday = new Date(2008, 0, 21, 8, 9); // January 21, 2008, 8:09 AM
+        const now = new Date();
+        const timeDifference = now - birthday;
+        const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
+        const months = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44)); 
+
+        document.getElementById("birthday-counter-detailed").textContent = `${years} years, ${months} months`;
+      }
+      updateBirthdayCounterDetailed(); // Call the function initially
+      setInterval(updateBirthdayCounterDetailed, 1000); // Update every second
+    </script>
+    </div>
+  </div>
+
+</html>
